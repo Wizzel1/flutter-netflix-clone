@@ -1,6 +1,6 @@
 # Flutter Netflix Responsive UI Tutorial | Web and Mobile
 
-[YouTube Tutorial](https://youtu.be/rJKN_880b-M)
+[Web Version](https://wizzel1.github.io/flutter-netflix-clone-web/#/)
 
 ![Web Screenshot](screenshots/web.png)
 
