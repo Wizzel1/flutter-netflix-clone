@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-
-import 'package:flutter_netflix_responsive_ui/models/models.dart';
-import 'package:flutter_netflix_responsive_ui/widgets/widgets.dart';
 import 'package:video_player/video_player.dart';
+import '../models/models.dart';
+import 'package:flutter_netflix_responsive_ui/widgets/widgets.dart';
 
 class ContentHeader extends StatelessWidget {
   final Content featuredContent;
 
-  const ContentHeader({
-    Key key,
-    @required this.featuredContent,
-  }) : super(key: key);
+  const ContentHeader({Key key, this.featuredContent}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +20,7 @@ class ContentHeader extends StatelessWidget {
 class _ContentHeaderMobile extends StatelessWidget {
   final Content featuredContent;
 
-  const _ContentHeaderMobile({
-    Key key,
-    @required this.featuredContent,
-  }) : super(key: key);
+  const _ContentHeaderMobile({Key key, this.featuredContent}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -38,25 +31,23 @@ class _ContentHeaderMobile extends StatelessWidget {
           height: 500.0,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(featuredContent.imageUrl),
-              fit: BoxFit.cover,
-            ),
+                image: AssetImage(featuredContent.imageUrl), fit: BoxFit.cover),
           ),
         ),
         Container(
           height: 500.0,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.black, Colors.transparent],
               begin: Alignment.bottomCenter,
               end: Alignment.topCenter,
+              colors: [Colors.black, Colors.transparent],
             ),
           ),
         ),
         Positioned(
           bottom: 110.0,
           child: SizedBox(
-            width: 250.0,
+            width: 250,
             child: Image.asset(featuredContent.titleImageUrl),
           ),
         ),
@@ -68,19 +59,17 @@ class _ContentHeaderMobile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               VerticalIconButton(
-                icon: Icons.add,
-                title: 'List',
-                onTap: () => print('My List'),
-              ),
+                  icon: Icons.add,
+                  title: "List",
+                  onTap: () => print("My List")),
               _PlayButton(),
               VerticalIconButton(
-                icon: Icons.info_outline,
-                title: 'Info',
-                onTap: () => print('Info'),
-              ),
+                  icon: Icons.info_outline,
+                  title: "Info",
+                  onTap: () => print("Info"))
             ],
           ),
-        ),
+        )
       ],
     );
   }
@@ -89,10 +78,8 @@ class _ContentHeaderMobile extends StatelessWidget {
 class _ContentHeaderDesktop extends StatefulWidget {
   final Content featuredContent;
 
-  const _ContentHeaderDesktop({
-    Key key,
-    @required this.featuredContent,
-  }) : super(key: key);
+  const _ContentHeaderDesktop({Key key, this.featuredContent})
+      : super(key: key);
 
   @override
   __ContentHeaderDesktopState createState() => __ContentHeaderDesktopState();
@@ -139,21 +126,31 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
                   ),
           ),
           Positioned(
+            bottom: -1.0,
             left: 0,
             right: 0,
-            bottom: -1.0,
             child: AspectRatio(
               aspectRatio: _videoController.value.initialized
                   ? _videoController.value.aspectRatio
                   : 2.344,
               child: Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.black, Colors.transparent],
                     begin: Alignment.bottomCenter,
                     end: Alignment.topCenter,
+                    colors: [Colors.black, Colors.transparent],
                   ),
                 ),
+              ),
+            ),
+          ),
+          Container(
+            height: 500.0,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                colors: [Colors.black, Colors.transparent],
               ),
             ),
           ),
@@ -171,7 +168,7 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
                 const SizedBox(height: 15.0),
                 Text(
                   widget.featuredContent.description,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
                     fontWeight: FontWeight.w500,
@@ -180,7 +177,7 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
                         color: Colors.black,
                         offset: Offset(2.0, 4.0),
                         blurRadius: 6.0,
-                      ),
+                      )
                     ],
                   ),
                 ),
@@ -192,34 +189,33 @@ class __ContentHeaderDesktopState extends State<_ContentHeaderDesktop> {
                     FlatButton.icon(
                       padding:
                           const EdgeInsets.fromLTRB(25.0, 10.0, 30.0, 10.0),
-                      onPressed: () => print('More Info'),
+                      onPressed: () => print("More info"),
                       color: Colors.white,
-                      icon: const Icon(Icons.info_outline, size: 30.0),
+                      icon: const Icon(
+                        Icons.info_outline,
+                        size: 30.0,
+                      ),
                       label: const Text(
-                        'More Info',
+                        "More Info",
                         style: TextStyle(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w600,
-                        ),
+                            fontSize: 16.0, fontWeight: FontWeight.w600),
                       ),
                     ),
                     const SizedBox(width: 20.0),
                     if (_videoController.value.initialized)
                       IconButton(
-                        icon: Icon(
-                          _isMuted ? Icons.volume_off : Icons.volume_up,
-                        ),
+                        icon:
+                            Icon(_isMuted ? Icons.volume_off : Icons.volume_up),
                         color: Colors.white,
-                        iconSize: 30.0,
                         onPressed: () => setState(() {
                           _isMuted
                               ? _videoController.setVolume(100)
                               : _videoController.setVolume(0);
                           _isMuted = _videoController.value.volume == 0;
                         }),
-                      ),
+                      )
                   ],
-                ),
+                )
               ],
             ),
           ),
@@ -233,19 +229,19 @@ class _PlayButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlatButton.icon(
-      padding: !Responsive.isDesktop(context)
+      padding: Responsive.isDesktop(context)
           ? const EdgeInsets.fromLTRB(15.0, 5.0, 20.0, 5.0)
           : const EdgeInsets.fromLTRB(25.0, 10.0, 30.0, 10.0),
-      onPressed: () => print('Play'),
-      color: Colors.white,
-      icon: const Icon(Icons.play_arrow, size: 30.0),
-      label: const Text(
-        'Play',
-        style: TextStyle(
-          fontSize: 16.0,
-          fontWeight: FontWeight.w600,
-        ),
+      onPressed: () => print("Play"),
+      icon: const Icon(
+        Icons.play_arrow,
+        size: 30.0,
       ),
+      label: const Text(
+        "Play",
+        style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w600),
+      ),
+      color: Colors.white,
     );
   }
 }
