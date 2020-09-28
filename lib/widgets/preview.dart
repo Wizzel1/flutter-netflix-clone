@@ -41,35 +41,35 @@ class Preview extends StatelessWidget {
                       Container(
                         height: 130,
                         width: 130,
-                        margin: const EdgeInsets.symmetric(horizontal: 16.0),
+                        margin: const EdgeInsets.symmetric(horizontal: 20.0),
                         decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: AssetImage(content.imageUrl),
-                                fit: BoxFit.cover),
-                            shape: BoxShape.circle,
-                            border:
-                                Border.all(color: content.color, width: 4.0)),
+                          image: DecorationImage(
+                              image: AssetImage(content.imageUrl),
+                              fit: BoxFit.cover),
+                          shape: BoxShape.circle,
+                        ),
                       ),
                       Container(
                         height: 130,
                         width: 130,
                         decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                                colors: [
-                                  Colors.black87,
-                                  Colors.black45,
-                                  Colors.transparent
-                                ],
-                                stops: [
-                                  0,
-                                  0.25,
-                                  1
-                                ],
-                                begin: Alignment.bottomCenter,
-                                end: Alignment.topCenter),
-                            shape: BoxShape.circle,
-                            border:
-                                Border.all(color: content.color, width: 4.0)),
+                          gradient: LinearGradient(
+                              colors: [
+                                Colors.black87,
+                                Colors.black45,
+                                Colors.transparent
+                              ],
+                              stops: [
+                                0,
+                                0.25,
+                                1
+                              ],
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter),
+                          shape: BoxShape.circle,
+                          border:
+                              Border.all(color: Colors.red[900], width: 4.0),
+                        ),
                       ),
                       Positioned(
                         left: 0,
