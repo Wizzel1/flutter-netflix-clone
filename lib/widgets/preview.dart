@@ -39,8 +39,8 @@ class Preview extends StatelessWidget {
                     alignment: Alignment.center,
                     children: [
                       Container(
-                        height: 130,
-                        width: 130,
+                        height: 150,
+                        width: 150,
                         margin: const EdgeInsets.symmetric(horizontal: 20.0),
                         decoration: BoxDecoration(
                           image: DecorationImage(
@@ -50,8 +50,8 @@ class Preview extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        height: 130,
-                        width: 130,
+                        height: 150,
+                        width: 150,
                         decoration: BoxDecoration(
                           gradient: LinearGradient(
                               colors: [

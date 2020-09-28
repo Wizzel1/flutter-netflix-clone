@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:video_player/video_player.dart';
+//import 'package:video_player/video_player.dart';
+import 'package:ext_video_player/ext_video_player.dart';
 import '../models/models.dart';
 import 'package:flutter_netflix_responsive_ui/widgets/widgets.dart';
 
